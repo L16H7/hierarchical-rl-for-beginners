@@ -1,0 +1,6 @@
+numpy==2.2.6
+torch==2.8.0
+gymnasium==1.1.1
+mujoco==3.3.7
+sai-mujoco==0.1.26
+sai-rl==0.1.35

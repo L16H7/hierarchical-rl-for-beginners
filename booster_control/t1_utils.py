@@ -2,7 +2,7 @@ import torch
 import mujoco
 import numpy as np
 import yaml
-from huggingface_hub import hf_hub_download
+import os
 
 class LowerT1JoyStick:
     """
@@ -74,18 +74,12 @@ class LowerT1JoyStick:
 
     def load(self):
 
-        cfg_file = hf_hub_download(
-                    repo_id="SaiResearch/booster_soccer_models",
-                    filename="config/lower_t1.yaml",
-                    repo_type="model")
+        cfg_file = os.path.join(os.path.dirname(__file__), 'lower_t1.yaml')
         
         with open(cfg_file, "r", encoding="utf-8") as f:
             cfg = yaml.load(f.read(), Loader=yaml.FullLoader)
 
-        model_file = hf_hub_download(
-                    repo_id="SaiResearch/booster_soccer_models",
-                    filename="robot/lower_t1_control.pt",
-                    repo_type="model")
+        model_file = os.path.join(os.path.dirname(__file__), 'lower_t1_control.pt')
         
         model = torch.jit.load(model_file)
         model.eval()
