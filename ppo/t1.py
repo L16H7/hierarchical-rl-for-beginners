@@ -258,10 +258,4 @@ class LowerT1JoyStick:
             self.gait_process + self.cfg["sim"]["dt"] * self.gait_frequency, 1.0
         )
 
-        low = np.array([-45, -45, -30, -65, -24, -15, -45, -45, -30, -65, -24, -15])
-        high = np.array([45, 45, 30, 65, 24, 15, 45, 45, 30, 65, 24, 15])
-
-        normalized_ctrl = 2 * (ctrl - low) / (high - low) - 1
-        normalized_ctrl = np.clip(normalized_ctrl, -1.0, 1.0)
-
-        return normalized_ctrl
+        return ctrl
